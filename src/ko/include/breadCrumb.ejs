@@ -1,0 +1,31 @@
+<div class="breadcrumb">
+    <div class="breadcrumb__inner">
+        <nav class="breadcrumb__menu">
+            <ul>
+                <li><a href="/ko/index.html" class="btn btn-home">main page</a></li>
+                <li class="depth1">
+                    <button type="button"><%= depth1 %></button>
+                    <ul class="under_depth">
+                        <% menuLists.mainMenu.forEach(menu => { %>
+                        <li class="<%= depth1 === menu.title ? 'active' : '' %>">
+                            <a href="<%= menu.url %>"><%= menu.title %></a>
+                        </li>
+                        <% }) %>
+                    </ul>
+                </li>
+                <li class="depth2">
+                    <button type="button"><%= pageName %></button>
+                    <% if (menuLists.subMenu[depth1]) { %>
+                    <ul class="under_depth">
+                        <% menuLists.subMenu[depth1].forEach(item => { %>
+                        <li class="<%= pageName === item.title ? 'active' : '' %>">
+                            <a href="<%= item.url %>"><%= item.title %></a>
+                        </li>
+                        <% }) %>
+                    </ul>
+                    <% } %>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

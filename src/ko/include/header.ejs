@@ -1,0 +1,27 @@
+<header class="header">
+    <div class="header__inner">
+        <h1>
+            <a href="/ko/index.html">
+                <img src="/path/to/logo.png" alt="LOGO" />
+            </a>
+        </h1>
+        <nav id="gnb" class="gnb">
+            <ul>
+                <% menuLists.mainMenu.forEach(mainMenuItem => { %>
+                <li class="depth1 <%= depth1 === mainMenuItem.title ? 'active' : '' %>">
+                    <a href="<%= mainMenuItem.url %>"><%= mainMenuItem.title %></a>
+                    <% if (menuLists.subMenu[mainMenuItem.title] && menuLists.subMenu[mainMenuItem.title].length > 0) { %>
+                    <ul class="depth2">
+                        <% menuLists.subMenu[mainMenuItem.title].forEach(subMenuItem => { %>
+                        <li class="<%= pageName === subMenuItem.title ? 'active' : '' %>">
+                            <a href="<%= subMenuItem.url %>"><%= subMenuItem.title %></a>
+                        </li>
+                        <% }) %>
+                    </ul>
+                    <% } %>
+                </li>
+                <% }) %>
+            </ul>
+        </nav>
+    </div>
+</header>
