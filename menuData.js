@@ -1,34 +1,31 @@
 export default {
-    mainMenu: [
-        { title: 'Menu1', url: '/ko/menu1/index1.html' },
-        { title: 'Menu2', url: '/ko/menu2/index1.html' },
-        { title: 'Menu3', url: '/ko/menu3/index1.html' },
-        { title: 'Menu4', url: '/ko/menu4/index1.html' },
+    main: {
+        title: '비닷',
+        url: '/ko/index.html',
+    },
+    menu: [
+        { title: '소개', url: '/ko/about/intro.html' },
+        { title: '제품', url: '/ko/product/productType1.html' },
+        { title: 'ESG', url: '/ko/esg/environment.html' },
+        { title: '고객지원', url: '/ko/contact/inquiry.html' },
     ],
     subMenu: {
-        Menu1: [
-            { title: 'index1', url: '/ko/menu1/index1.html' },
-            { title: 'index2', url: '/ko/menu1/index2.html' },
-            { title: 'index3', url: '/ko/menu1/index3.html' },
-            { title: 'index4', url: '/ko/menu1/index4.html' },
+        about: [
+            { title: '회사소개', url: '/ko/about/intro.html' },
+            { title: '오시는길', url: '/ko/about/directions.html' },
         ],
-        Menu2: [
-            { title: 'index1', url: '/ko/menu2/index1.html' },
-            { title: 'index2', url: '/ko/menu2/index2.html' },
-            { title: 'index3', url: '/ko/menu2/index3.html' },
-            { title: 'index4', url: '/ko/menu2/index4.html' },
+        product: [
+            { title: '제품 타입1', url: '/ko/product/productType1.html' },
+            { title: '제품 타입2', url: '/ko/product/productType2.html' },
         ],
-        Menu3: [
-            { title: 'index1', url: '/ko/menu3/index1.html' },
-            { title: 'index2', url: '/ko/menu3/index2.html' },
-            { title: 'index3', url: '/ko/menu3/index3.html' },
-            { title: 'index4', url: '/ko/menu3/index4.html' },
+        esg: [
+            { title: '환경', url: '/ko/esg/environment.html' },
+            { title: '사회', url: '/ko/esg/social.html' },
+            { title: '지배구조', url: '/ko/esg/governance.html' },
         ],
-        Menu4: [
-            { title: 'index1', url: '/ko/menu4/index1.html' },
-            { title: 'index2', url: '/ko/menu4/index2.html' },
-            { title: 'index3', url: '/ko/menu4/index3.html' },
-            { title: 'index4', url: '/ko/menu4/index4.html' },
+        contact: [
+            { title: '문의하기', url: '/ko/contact/inquiry.html' },
+            { title: '연락처', url: '/ko/contact/contactUs.html' },
         ],
     },
 };

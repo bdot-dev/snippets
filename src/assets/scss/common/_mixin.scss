@@ -1,1 +1,43 @@
 @charset "UTF-8";
+
+@mixin innerStyle {
+    max-width: 1680px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@mixin fontStyle($size: null, $weight: null, $lh: null, $color: null) {
+    @if $size != null {
+        font-size: $size;
+    }
+    @if $weight != null {
+        font-weight: $weight;
+    }
+    @if $lh != null {
+        line-height: $lh;
+    }
+    @if $color != null {
+        color: $color;
+    }
+}
+
+@mixin ellipsis($line) {
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+}
+
+@mixin ir() {
+    position: absolute;
+    top: -99999px;
+    left: -99999px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    text-indent: -99999px;
+}

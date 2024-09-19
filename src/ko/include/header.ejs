@@ -1,18 +1,18 @@
 <header class="header">
     <div class="header__inner">
-        <h1>
+        <h1 class="header__logo">
             <a href="/ko/index.html">
-                <img src="/path/to/logo.png" alt="LOGO" />
+                <img src="/resources/assets/images/common/logo.png" alt="LOGO" />
             </a>
         </h1>
         <nav id="gnb" class="gnb">
             <ul>
-                <% menuLists.mainMenu.forEach(mainMenuItem => { %>
-                <li class="depth1 <%= depth1 === mainMenuItem.title ? 'active' : '' %>">
-                    <a href="<%= mainMenuItem.url %>"><%= mainMenuItem.title %></a>
-                    <% if (menuLists.subMenu[mainMenuItem.title] && menuLists.subMenu[mainMenuItem.title].length > 0) { %>
+                <% menuLists.menu.forEach(menuItem => { %>
+                <li class="depth1 <%= depth1 === menuItem.title ? 'active' : '' %>">
+                    <a href="<%= menuItem.url %>"><%= menuItem.title %></a>
+                    <% if (menuLists.subMenu[menuItem.title] && menuLists.subMenu[menuItem.title].length > 0) { %>
                     <ul class="depth2">
-                        <% menuLists.subMenu[mainMenuItem.title].forEach(subMenuItem => { %>
+                        <% menuLists.subMenu[menuItem.title].forEach(subMenuItem => { %>
                         <li class="<%= pageName === subMenuItem.title ? 'active' : '' %>">
                             <a href="<%= subMenuItem.url %>"><%= subMenuItem.title %></a>
                         </li>
@@ -23,5 +23,20 @@
                 <% }) %>
             </ul>
         </nav>
+        <div class="header__right">
+            <div class="user">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="all-menu">
+                <button type="button" class="btn btn-allmenu">
+                    <span class="btn-allmenu__middle">전체메뉴 라인</span>
+                    전체 메뉴
+                </button>
+            </div>
+        </div>
     </div>
 </header>

@@ -1,0 +1,43 @@
+
+@charset "UTF-8";
+@import 'common/mixin';
+
+.sub-visual {
+    height: 70vh;
+    background-color: #e8e8e8;
+}
+
+// breadcrumb
+.breadcrumb {
+    border-bottom: 1px solid #e8e8e8;
+    &__inner {
+        @include innerStyle;
+    }
+    &__menu {
+        > ul {
+            display: inline-flex;
+            li {
+                position: relative;
+            }
+        }
+    }
+    .btn-home {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        background-color: #ddd;
+        font-size: 0;
+    }
+    &__depth1 > button , &__depth2 > button {
+        display: inline-block;
+        min-width: 250px;
+        @include fontStyle(18px, null, 45px, #1a1a1a);
+        padding: 0 25px;
+        @include ellipsis(1);
+    }
+    &__submenu {
+        position: absolute;
+        top: 45px;
+        left: 0;
+    }
+}

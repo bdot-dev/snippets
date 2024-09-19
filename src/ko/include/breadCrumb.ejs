@@ -3,27 +3,25 @@
         <nav class="breadcrumb__menu">
             <ul>
                 <li><a href="/ko/index.html" class="btn btn-home">main page</a></li>
-                <li class="depth1">
-                    <button type="button"><%= depth1 %></button>
-                    <ul class="under_depth">
-                        <% menuLists.mainMenu.forEach(menu => { %>
+                <li class="breadcrumb__depth1 custom-select">
+                    <button type="button"><% const menuItem = menuLists.menu.find(menu => menu.url.includes(depth1)); %> <%= menuItem ? menuItem.title : depth1 %></button>
+                    <ul class="breadcrumb__submenu">
+                        <% menuLists.menu.forEach(menu => { %>
                         <li class="<%= depth1 === menu.title ? 'active' : '' %>">
                             <a href="<%= menu.url %>"><%= menu.title %></a>
                         </li>
                         <% }) %>
                     </ul>
                 </li>
-                <li class="depth2">
-                    <button type="button"><%= pageName %></button>
-                    <% if (menuLists.subMenu[depth1]) { %>
-                    <ul class="under_depth">
-                        <% menuLists.subMenu[depth1].forEach(item => { %>
-                        <li class="<%= pageName === item.title ? 'active' : '' %>">
-                            <a href="<%= item.url %>"><%= item.title %></a>
+                <li class="breadcrumb__depth2 custom-select">
+                    <button type="button"><% const subMenuItem = menuLists.subMenu[depth1] ? menuLists.subMenu[depth1].find(item => item.url.includes(pageName)) : null; %> <%= subMenuItem ? subMenuItem.title : pageName %></button>
+                    <ul class="breadcrumb__submenu">
+                        <% if (menuLists.subMenu[depth1]) { %> <% menuLists.subMenu[depth1].forEach(subMenuItem => { %>
+                        <li class="<%= pageName === subMenuItem.title ? 'active' : '' %>">
+                            <a href="<%= subMenuItem.url %>"><%= subMenuItem.title %></a>
                         </li>
-                        <% }) %>
+                        <% }) %> <% } %>
                     </ul>
-                    <% } %>
                 </li>
             </ul>
         </nav>

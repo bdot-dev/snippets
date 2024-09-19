@@ -8,6 +8,8 @@ import del from 'del';
 import browserSyncPackage from 'browser-sync';
 import babel from 'gulp-babel';
 import menuData from './menuData.js';
+import data from 'gulp-data';
+import path from 'path';
 
 const { series, parallel, watch, src, dest } = gulp;
 const browserSync = browserSyncPackage.create();
@@ -48,16 +50,26 @@ const CONFIG = {
  * ? @task : EJS
  */
 async function EJS() {
-    return new Promise((resolve) => {
-        src([CONFIG.workspace.HTML + '/**/*.html', '!' + CONFIG.workspace.HTML + '/**/include/*.html', '!' + CONFIG.workspace.HTML + '/php/**/*.html'])
-            .pipe(
-                ejs({
-                    menuLists: menuData, // 데이터 전달
-                })
-            )
-            .pipe(dest(CONFIG.deploy.HTML));
-        resolve();
-    });
+    return src([CONFIG.workspace.HTML + '/**/*.html', '!' + CONFIG.workspace.HTML + '/**/include/*.html', '!' + CONFIG.workspace.HTML + '/php/**/*.html'])
+        .pipe(
+            data((file) => {
+                const relativePath = path.relative(CONFIG.workspace.HTML, file.path);
+                const fileName = path.basename(file.path, path.extname(file.path));
+                const parts = file.path.split('ko\\');
+                const depth1 = parts[1] ? parts[1].split(/\\|\//)[0] : '';
+
+                console.log(depth1);
+
+                return {
+                    menuLists: menuData,
+                    currentPath: relativePath,
+                    depth1: depth1,
+                    pageName: fileName,
+                };
+            })
+        )
+        .pipe(ejs({}, { ext: '.html' }))
+        .pipe(dest(CONFIG.deploy.HTML));
 }
 
 /**
