@@ -16,8 +16,10 @@
     &__menu {
         > ul {
             display: inline-flex;
-            li {
+            > li {
                 position: relative;
+                border-right: 1px solid #e8e8e8;
+                font-size: 0;
             }
         }
     }
@@ -34,10 +36,53 @@
         @include fontStyle(18px, null, 45px, #1a1a1a);
         padding: 0 25px;
         @include ellipsis(1);
+        text-align: left;
+        &::before {
+            content:'';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            display: inline-block;
+            border-top: 7px solid #000;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 0px solid transparent;
+            transform: translateY(-50%);
+            transition: 0.18s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+    }
+    &__depth1, &__depth2 {
+        &.active {
+            > button {
+                &::before {
+                    transform: translateY(-50%) rotate(180deg);
+                }
+            }
+        }
     }
     &__submenu {
         position: absolute;
         top: 45px;
-        left: 0;
+        left: -1px;
+        width: 100%;
+        border: 1px solid #e8e8e8;
+        border-top: none;
+        li {
+            & + li {
+                border-top: 1px solid #e8e8e8;
+            }
+            a {
+                position: relative;
+                display: block;
+                padding: 0 25px;
+                text-align: left;
+                @include fontStyle(16px, 400, 36px, null);
+            }
+            &.active {
+                a {
+                    @include fontStyle(null, 700, null, red);
+                }
+            }
+        }
     }
 }

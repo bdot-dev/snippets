@@ -57,9 +57,6 @@ async function EJS() {
                 const fileName = path.basename(file.path, path.extname(file.path));
                 const parts = file.path.split('ko\\');
                 const depth1 = parts[1] ? parts[1].split(/\\|\//)[0] : '';
-
-                console.log(depth1);
-
                 return {
                     menuLists: menuData,
                     currentPath: relativePath,

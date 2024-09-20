@@ -7,13 +7,13 @@
         </h1>
         <nav id="gnb" class="gnb">
             <ul>
-                <% menuLists.menu.forEach(menuItem => { %>
-                <li class="depth1 <%= depth1 === menuItem.title ? 'active' : '' %>">
+                <% Object.entries(menuLists.menus).forEach(([key, menuItem]) => { %>
+                <li class="depth1 <%= depth1 === key ? 'active' : '' %>">
                     <a href="<%= menuItem.url %>"><%= menuItem.title %></a>
-                    <% if (menuLists.subMenu[menuItem.title] && menuLists.subMenu[menuItem.title].length > 0) { %>
+                    <% if (menuItem.depth2) { %>
                     <ul class="depth2">
-                        <% menuLists.subMenu[menuItem.title].forEach(subMenuItem => { %>
-                        <li class="<%= pageName === subMenuItem.title ? 'active' : '' %>">
+                        <% Object.entries(menuItem.depth2).forEach(([subKey, subMenuItem]) => { %>
+                        <li class="<%= pageName === subKey ? 'active' : '' %>">
                             <a href="<%= subMenuItem.url %>"><%= subMenuItem.title %></a>
                         </li>
                         <% }) %>
