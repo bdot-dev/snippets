@@ -1,17 +1,17 @@
-<header class="header">
+<header class="header <%= typeof headerType !== 'undefined' ? headerType : '' %>">
     <div class="header__inner">
         <h1 class="header__logo">
             <a href="/ko/index.html">
-                <img src="/resources/assets/images/common/logo.png" alt="LOGO" />
+                <img src="/resources/assets/images/common/logo.svg" alt="LOGO" />
             </a>
         </h1>
         <nav id="gnb" class="gnb">
             <ul>
                 <% Object.entries(menuLists.menus).forEach(([key, menuItem]) => { %>
-                <li class="depth1 <%= depth1 === key ? 'active' : '' %>">
+                <li class="gnb__depth1 <%= depth1 === key ? 'active' : '' %>">
                     <a href="<%= menuItem.url %>"><%= menuItem.title %></a>
                     <% if (menuItem.depth2) { %>
-                    <ul class="depth2">
+                    <ul class="gnb__depth2">
                         <% Object.entries(menuItem.depth2).forEach(([subKey, subMenuItem]) => { %>
                         <li class="<%= pageName === subKey ? 'active' : '' %>">
                             <a href="<%= subMenuItem.url %>"><%= subMenuItem.title %></a>
@@ -40,3 +40,53 @@
         </div>
     </div>
 </header>
+<!-- <div class="loader">
+    <div class="spinner" id="spinner">
+        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="gradient" x1="50%" y1="50%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color: pink; stop-opacity: 1" />
+                    <stop offset="100%" style="stop-color: cyan; stop-opacity: 1" />
+                </linearGradient>
+
+                <path id="circlePath" d="M 100,20 A 80,80 0 1,1 100,180 A 80,80 0 1,1 100,20" fill="none" />
+            </defs>
+
+            <circle r="10" fill="url(#gradient)">
+                <animateMotion dur="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;0.4" keySplines="0.42 0 0.58 1">
+                    <mpath href="#circlePath" />
+                </animateMotion>
+            </circle>
+
+            <circle r="10" fill="url(#gradient)">
+                <animateMotion dur="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;0.5" begin="0.05s" keySplines="0.42 0 0.58 1">
+                    <mpath href="#circlePath" />
+                </animateMotion>
+            </circle>
+
+            <circle r="10" fill="url(#gradient)">
+                <animateMotion dur="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;0.58" begin="0.1s" keySplines="0.42 0 0.58 1">
+                    <mpath href="#circlePath" />
+                </animateMotion>
+            </circle>
+
+            <circle r="10" fill="url(#gradient)">
+                <animateMotion dur="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;0.64" begin="0.15s" keySplines="0.42 0 0.58 1">
+                    <mpath href="#circlePath" />
+                </animateMotion>
+            </circle>
+
+            <circle r="10" fill="url(#gradient)">
+                <animateMotion dur="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;0.68" begin="0.2s" keySplines="0.42 0 0.58 1">
+                    <mpath href="#circlePath" />
+                </animateMotion>
+            </circle>
+
+            <circle r="10" fill="url(#gradient)">
+                <animateMotion dur="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;0.7" begin="0.25s">
+                    <mpath href="#circlePath" />
+                </animateMotion>
+            </circle>
+        </svg>
+    </div>
+</div> -->

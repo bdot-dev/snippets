@@ -5,6 +5,23 @@
 .sub-visual {
     height: 70vh;
     background-color: #e8e8e8;
+    &__inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+}
+
+.sub-visual__title {
+    @include fontStyle(52px, 700, null, #000);
+}
+
+.contents {
+    padding: 80px 0;
+    &__inner {
+        @include innerStyle;
+    }
 }
 
 // breadcrumb
@@ -62,11 +79,12 @@
     }
     &__submenu {
         position: absolute;
-        top: 45px;
-        left: -1px;
-        width: 100%;
+        top: 46px;
+        left: -1px; // 위치 보정
+        width: calc(100% + 2px); // 너비 차이 보정
         border: 1px solid #e8e8e8;
         border-top: none;
+        background-color: #fff;
         li {
             & + li {
                 border-top: 1px solid #e8e8e8;

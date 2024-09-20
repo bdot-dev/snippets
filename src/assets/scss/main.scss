@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@import 'common/mixin';
+
+.main {
+    
+}
+
+.section {
+    padding: 120px 0;
+    &__inner {
+        @include innerStyle;
+    }
+    &--kv {
+        padding: 0;
+    }
+}
+
+.kv {
+    height: 100vh;
+    background-color: #e8e8e8;
+    .swiper-wrapper {
+        height: 100%;
+    }
+    &__slide {
+        height: 100%;
+        h2 {
+            @include fontStyle(50px, 600, 60px, #000);
+        }
+    }
+    &__inner {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        @include innerStyle;
+    }
+    
+}

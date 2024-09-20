@@ -5,11 +5,27 @@
         <div class="wrap">
             <%- include("./include/header.ejs") %>
             <div class="container">
-                <div class="key-visual">
-                    <div class="key-visual__inner"></div>
-                </div>
+                <main class="main">
+                    <section class="section section--kv">
+                        <h2 class="ir">메인 키비주얼</h2>
+                        <div class="kv swiper">
+                            <div class="swiper-wrapper">
+                                <div class="kv__slide swiper-slide">
+                                    <div class="kv__inner">
+                                        <h2>제목이 들어갑니다.</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="section section--about">
+                        <div class="section__inner">
+                            <h2>소개</h2>
+                        </div>
+                    </div>
+                </main>
             </div>
-            <%- include("./include/footer.ejs") %>
+            <%- include("./include/footer.ejs", { floatingMenu: false }) %>
         </div>
     </body>
 </html>

@@ -1,0 +1,4 @@
+<h2 class="sub-visual__title">
+    <% const mainTitle = menuLists.main.title; const depth1Menu = menuLists.menus[depth1]; const depth1Title = depth1Menu ? depth1Menu.title : ''; let pageTitle = ''; if (depth1Menu && depth1Menu.depth2) { const pageTitleItem = Object.values(depth1Menu.depth2).find(item =>
+    item.url.includes(pageName)); pageTitle = pageTitleItem ? pageTitleItem.title : ''; } %> <%= pageTitle %>
+</h2>

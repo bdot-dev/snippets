@@ -1,4 +1,9 @@
 @charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -57,7 +62,6 @@ a {
 	color: inherit;
 	vertical-align: top;
 	text-decoration: none;
-	box-sizing: border-box;
 	cursor: pointer;
 }
 

@@ -23,10 +23,15 @@
     <meta name="twitter:image" content="" />
     <!-- RESOURCES -->
     <link rel="stylesheet" href="/resources/assets/css/common.css" />
-    <% if (depth1 === 'main') { %>
+    <% if (depth1 === 'index.html') { %>
     <link rel="stylesheet" href="/resources/assets/css/main.css" />
     <% } else { %>
     <link rel="stylesheet" href="/resources/assets/css/sub.css" />
     <% } %>
     <script defer src="/resources/assets/script/common.js"></script>
+    <% if (depth1 === 'index.html') { %>
+    <script defer src="/resources/assets/script/main.js"></script>
+    <% } else { %>
+    <script defer src="/resources/assets/script/sub.js"></script>
+    <% } %>
 </head>
