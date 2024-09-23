@@ -1,18 +1,22 @@
-// const loadingElement = document.querySelector('.loading');
-// loadingElement.style.display = 'flex';
+const loadingElement = document.querySelector('.loader');
+document.querySelector('body').style.overflowY = 'hidden';
+loadingElement.style.display = 'flex';
 
-// const loading = {
-//     init: function () {
-//         window.addEventListener('load', function () {
-//             // 스피너 확인 용 코드
-//             setTimeout(() => {
-//                 loadingElement.style.display = 'none';
-//             }, 11111500);
-//             // loadingElement.style.display = 'none';
-//         });
-//     },
-// };
-// loading.init();
+console.log(loadingElement);
+
+const loading = {
+    init: function () {
+        window.addEventListener('load', function () {
+            // 스피너 확인 용 코드
+            setTimeout(() => {
+                document.querySelector('body').style.overflowY = 'visible';
+                loadingElement.style.display = 'none';
+            }, 150);
+            // loadingElement.style.display = 'none';
+        });
+    },
+};
+loading.init();
 
 document.addEventListener('DOMContentLoaded', function () {
     // VARIABLES
@@ -27,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const $btnAllMenu = document.querySelector('.btn-allmenu');
     const $floatingMenu = document.querySelector('.floating-menu__container');
     const $topButton = document.querySelector('.btn-top');
+    const $allMenu = document.querySelector('.all-menu');
+    const $allMenuCloseButton = document.querySelector('.all-menu__close');
 
     // FUNCTIONS
     const scroll = {
@@ -63,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const resize = {
         updateWindowWidth() {
             ww = window.outerWidth;
-            console.log(ww);
         },
         init() {
             window.addEventListener('resize', this.updateWindowWidth.bind(this));
@@ -71,12 +76,16 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const header = {
+        closeAllMenu() {
+            $allMenu.classList.remove('active');
+        },
         init() {
             if ($btnAllMenu) {
                 $btnAllMenu.addEventListener('click', function () {
-                    this.classList.toggle('active');
+                    $allMenu.classList.add('active');
                 });
             }
+            $allMenuCloseButton.addEventListener('click', this.closeAllMenu);
         },
     };
 

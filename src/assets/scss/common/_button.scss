@@ -43,20 +43,6 @@
         transition: 0.13s cubic-bezier(1, 0, 0, 1);
     }
     
-    &.active {
-        &::before {
-            margin-top: 0;
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-        &::after {
-            margin-top: 0;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        .btn-allmenu__middle {
-            opacity: 0;
-            visibility: hidden;
-        }
-    }
 }
 
 .btn-top {

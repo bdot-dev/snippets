@@ -7,20 +7,77 @@
 
 // common
 .loader {
+    display: none;
     position: fixed;
-    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100vh;
-    background-color: #1e1e1e;
+    background-color: #fff;
     z-index: 999999;
+    &::before {
+        content:'';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    &__spinner {
+        color: #ffffff;
+        font-size: 45px;
+        text-indent: -9999em;
+        overflow: hidden;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        position: relative;
+        transform: translateZ(0);
+        animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
+    }
 }
 
+@keyframes mltShdSpin {
+    0% {
+        box-shadow: 0 -0.83em 0 -0.4em,
+        0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+        0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+        box-shadow: 0 -0.83em 0 -0.4em, 
+        0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 
+        0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+        box-shadow: 0 -0.83em 0 -0.4em, 
+        -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, 
+        -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+        -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, 
+        -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+        -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, 
+        -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 
+        0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+}
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes round {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
 }
 
 .ir {
@@ -52,7 +109,6 @@ body {
     width: 100%;
     transition: 0.54s cubic-bezier(0.19, 1, 0.22, 1);
     z-index: 1;
-    
     &--change {
         &.active {
             background-color: #fff;
@@ -85,23 +141,97 @@ body {
     > ul {
         display: flex;
     }
-
     &__depth1 {
         display: inline-block;
         @include fontStyle(24px, null, 80px, null);
         padding: 0 25px;
     }
-
     &__depth2 {
         display: none;
     }
-
 }
 
 .user {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+}
+
+.all-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    display: inline-flex;
+    flex-direction: column;
+    max-width: 375px;
+    width: 100%;
+    height: 100vh;
+    padding: 20px 40px;
+    background-color: #fff;
+    transition: 0.34s cubic-bezier(0.85, 0, 0.15, 1);
+    &.active {
+        right: 0;
+    }
+    &__header {
+        text-align: right;
+        > button {
+            display: inline-block;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            &::before, &::after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                height: 1px;
+                background-color: #000;
+            }
+            &::before {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+            &::after {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+        }
+    }
+    > ul {
+        flex-basis: 100%;        
+    }
+    &__depth1 {
+        & + & {
+            padding-top: 25px;
+        }
+        &.active {
+            > a {
+                color: red;
+            }
+        }
+        > a {
+            display: block;
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 52px;
+            border-bottom: 1px solid #bcbcbc;
+        }
+    }
+    &__depth2 {
+        > li {
+            border-bottom: 1px solid #e8e8e8;
+            a {
+                display: block;
+                font-size: 18px;
+                line-height: 40px;
+            }
+            &.active {
+                > a {
+                    color: red;
+                }
+            }
+        }
+    }
 }
 
 .footer {
@@ -111,9 +241,6 @@ body {
         justify-content: space-between;
         padding: 50px 0;
         @include innerStyle;
-    }
-    &__left {
-        
     }
     &__logo {
         display: flex;
